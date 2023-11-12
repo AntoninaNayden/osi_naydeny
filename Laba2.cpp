@@ -36,7 +36,7 @@ void random() {
 
 int main()
 {
-    SetConsoleCtrlHandler(ProcessEvents, 1);
+    SetConsoleCtrlHandler(ProcessEvents, TRUE);
     CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)reverse_string, NULL, 0, NULL);
     CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)random, NULL, 0, NULL);
     while (true);
