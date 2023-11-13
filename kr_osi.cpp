@@ -35,12 +35,11 @@ public:
 			return false;
 		}
 	}
+	
 private:
 	int sum;
-	
-
 };
-void changes(MyBank& mybank, std::vector<int> changes) {
+void changesfun(MyBank& mybank, std::vector<int> changes) {
 	std::vector<int> negativeOperations;
 	for (int i = 0; i < changes.size(); i++) {
 		if (mybank.notNegative(changes[i])) {
@@ -60,7 +59,7 @@ void changes(MyBank& mybank, std::vector<int> changes) {
 			std::cout << "Update: " << negativeOperations[i] << " is to small\n";
 		}
 	}
-	
+
 }
 int main() {
 		int a;
@@ -68,8 +67,8 @@ int main() {
 		MyBank balance(a);
 		std::vector<int> v1 = { 120, -300, 40 };
 		std::vector<int> v2 = { 100, -300, 20 };
-		std::thread t1 (changes, std::ref(balance), v1);
-		std::thread t2 (changes, std::ref(balance), v2);
+		std::thread t1 (changesfun, std::ref(balance), v1);
+		std::thread t2 (changesfun, std::ref(balance), v2);
 		t1.join();
 		t2.join();
 		std::cout << balance.getSum();
